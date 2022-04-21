@@ -1,4 +1,4 @@
-package com.ipz.bookstore;
+package com.ipz.bybook;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
