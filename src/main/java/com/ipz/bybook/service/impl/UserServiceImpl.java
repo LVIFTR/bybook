@@ -6,16 +6,24 @@ import com.ipz.bybook.repository.UserRepository;
 import com.ipz.bybook.service.UserService;
 import com.sun.istack.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
-public class UserServiceImpl implements UserService {
+public class UserServiceImpl implements UserService, UserDetailsService {
 
     private final UserRepository userRepository;
 
+
+    private final BCryptPasswordEncoder passwordEncoder;
+
     @Autowired
-    public UserServiceImpl(UserRepository userRepository) {
+    public UserServiceImpl(UserRepository userRepository, BCryptPasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @Override
@@ -23,8 +31,8 @@ public class UserServiceImpl implements UserService {
         User user = User.builder()
                 .firstName(createUserForm.getFirstName())
                 .lastName(createUserForm.getLastName())
-                .email(createUserForm.getEmail())
-                .password(createUserForm.getPassword())
+                .username(createUserForm.getUsername())
+                .password(passwordEncoder.encode(createUserForm.getPassword()))
                 .nickname(createUserForm.getNickname())
                 .build();
 
@@ -42,8 +50,8 @@ public class UserServiceImpl implements UserService {
         User updatedUser = userForDB.toBuilder()
                 .firstName(user.getFirstName())
                 .lastName(user.getLastName())
-                .email(user.getEmail())
-                .password(user.getPassword())
+                .username(user.getUsername())
+                .password(passwordEncoder.encode(user.getPassword()))
                 .nickname(user.getNickname())
                 .build();
         return userRepository.save(updatedUser);
@@ -51,6 +59,12 @@ public class UserServiceImpl implements UserService {
 
     private User findUserByIdOrThrowException(Long id) {
         return userRepository.findById(id).orElseThrow(() -> new RuntimeException("User not found!"));
+    }
+
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        return userRepository.findByUsername(username)
+                .orElseThrow(() -> new UsernameNotFoundException("User not found!"));
     }
 
 }

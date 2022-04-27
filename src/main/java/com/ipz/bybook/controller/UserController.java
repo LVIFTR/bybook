@@ -27,16 +27,21 @@ public class UserController {
         return "user/new";
     }
 
-    @GetMapping("{id}")
+    @GetMapping("/{id}")
     public String findById(@PathVariable Long id) {
         userService.findById(id);
         return "user/user";
     }
 
     @PostMapping("/register")
-    public String create(CreateUserForm createUserForm) {
-        User user = userService.create(createUserForm);
-        return "redirect:/user" + user.getId();
+    public String create(CreateUserForm createUserForm, Model model) {
+        try{
+            userService.create(createUserForm);
+        } catch (RuntimeException exception) {
+            model.addAttribute("userCannotBeCreated", "Щось пішло не так!");
+            return "user/new";
+        }
+        return "redirect:/login";
     }
 
 }
