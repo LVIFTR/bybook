@@ -3,6 +3,7 @@ package com.ipz.bybook.controller;
 import com.ipz.bybook.dto.CreateUserForm;
 import com.ipz.bybook.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,6 +30,9 @@ public class UserController {
     @GetMapping("/{id}")
     public String findById(@PathVariable Long id) {
         userService.findById(id);
+    @GetMapping("{id}")
+    public String findById(@AuthenticationPrincipal User user, Model model) {
+        model.addAttribute("user", userService.findById(user.getId()));
         return "user/user";
     }
 

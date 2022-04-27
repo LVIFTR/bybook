@@ -30,7 +30,7 @@
                 </div>
             </div>
         </form>
-        <form action="/user/register" method="get">
+        <form action="/templates/user/register" method="get">
             <div class="form-row justify-content-center">
                 <input type="submit" class="btn btn-light m-3" value="Зареєструватися"/>
             </div>
