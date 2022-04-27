@@ -1,6 +1,5 @@
 package com.ipz.bybook.controller;
 
-import com.ipz.bybook.domain.User;
 import com.ipz.bybook.dto.CreateUserForm;
 import com.ipz.bybook.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
