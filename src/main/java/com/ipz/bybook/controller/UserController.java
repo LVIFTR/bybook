@@ -1,5 +1,6 @@
 package com.ipz.bybook.controller;
 
+import com.ipz.bybook.domain.User;
 import com.ipz.bybook.dto.CreateUserForm;
 import com.ipz.bybook.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,14 +24,11 @@ public class UserController {
     }
 
     @GetMapping("/register")
-    public String create(){
+    public String create() {
         return "user/new";
     }
 
-    @GetMapping("/{id}")
-    public String findById(@PathVariable Long id) {
-        userService.findById(id);
-    @GetMapping("{id}")
+    @GetMapping
     public String findById(@AuthenticationPrincipal User user, Model model) {
         model.addAttribute("user", userService.findById(user.getId()));
         return "user/user";
@@ -38,7 +36,7 @@ public class UserController {
 
     @PostMapping("/register")
     public String create(CreateUserForm createUserForm, Model model) {
-        try{
+        try {
             userService.create(createUserForm);
         } catch (RuntimeException exception) {
             model.addAttribute("userCannotBeCreated", "Щось пішло не так!");

@@ -4,7 +4,8 @@
     <#assign
     user = Session.SPRING_SECURITY_CONTEXT.authentication.principal
     name = user.getNickname()
+    fullName = user.getFirstName() + " " + user.getLastName()
     >
 <#else>
-    <#assign name = "">
+    <#assign name = "" fullName = "">
 </#if>
