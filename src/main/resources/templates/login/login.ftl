@@ -1,4 +1,5 @@
-<html>
+<!doctype html>
+<html lang="en">
 <head>
     <#include "../include/coreDependencies.ftl" >
     <title>Login</title>
