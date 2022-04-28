@@ -12,6 +12,10 @@ import javax.persistence.Id;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 import java.util.Collection;
 
 @Data
@@ -25,16 +29,26 @@ public class User implements UserDetails {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @NotBlank
+    @Min(value = 2)
     private String firstName;
 
+    @NotBlank
+    @Min(value = 2)
     private String lastName;
 
     @Column(unique = true)
+    @Email
+    @NotBlank
     private String username;
 
+    @NotBlank
+    @Min(value = 8)
     private String password;
 
+    @NotBlank
     @Column(unique = true)
+    @Size(min = 5, max = 20)
     private String nickname;
 
     @Override
