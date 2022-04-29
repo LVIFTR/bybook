@@ -51,6 +51,17 @@ public class User implements UserDetails {
     @Size(min = 5, max = 20)
     private String nickname;
 
+    @NotBlank
+    private String address;
+
+    @NotBlank
+    @Min(value = 5)
+    private String zipCode;
+
+    @NotBlank
+    @Column(unique = true)
+    private String phoneNumber;
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return null;

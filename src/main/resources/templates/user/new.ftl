@@ -23,6 +23,12 @@
                        autofocus="true" required/>
                 <input name="nickname" type="text" class="form-control m-3" placeholder="Введіть ваш нікнейм"
                        autofocus="true" required/>
+                <input name="address" type="text" class="form-control m-3" placeholder="Введіть вашу адресу проживання"
+                       autofocus="true" required/>
+                <input name="zipCode" type="text" class="form-control m-3" placeholder="Введіть ваш поштовий індекс"
+                       autofocus="true" required/>
+                <input name="phoneNumber" type="text" class="form-control m-3" placeholder="Введіть ваш номер телефону"
+                       autofocus="true" required/>
                 <input name="username" type="email" class="form-control m-3" placeholder="Email"
                        autofocus="true" required/>
                 <input name="password" type="password" class="form-control m-3" placeholder="Пароль" required/>

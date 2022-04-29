@@ -17,7 +17,6 @@ public class UserServiceImpl implements UserService, UserDetailsService {
 
     private final UserRepository userRepository;
 
-
     private final BCryptPasswordEncoder passwordEncoder;
 
     @Autowired
@@ -34,6 +33,9 @@ public class UserServiceImpl implements UserService, UserDetailsService {
                 .username(createUserForm.getUsername())
                 .password(passwordEncoder.encode(createUserForm.getPassword()))
                 .nickname(createUserForm.getNickname())
+                .address(createUserForm.getAddress())
+                .zipCode(createUserForm.getZipCode())
+                .phoneNumber(createUserForm.getPhoneNumber())
                 .build();
 
         return userRepository.save(user);
@@ -53,6 +55,9 @@ public class UserServiceImpl implements UserService, UserDetailsService {
                 .username(user.getUsername())
                 .password(passwordEncoder.encode(user.getPassword()))
                 .nickname(user.getNickname())
+                .address(user.getAddress())
+                .zipCode(user.getZipCode())
+                .phoneNumber(user.getPhoneNumber())
                 .build();
         return userRepository.save(updatedUser);
     }

@@ -19,4 +19,10 @@ public class CreateUserForm {
 
     private String nickname;
 
+    private String address;
+
+    private String zipCode;
+
+    private String phoneNumber;
+
 }
