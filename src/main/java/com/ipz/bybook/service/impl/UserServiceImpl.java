@@ -47,13 +47,12 @@ public class UserServiceImpl implements UserService, UserDetailsService {
     }
 
     @Override
-    public User update(User user) {
-        User userForDB = findUserByIdOrThrowException(user.getId());
+    public User update(CreateUserForm user, Long id) {
+        User userForDB = findUserByIdOrThrowException(id);
         User updatedUser = userForDB.toBuilder()
                 .firstName(user.getFirstName())
                 .lastName(user.getLastName())
                 .username(user.getUsername())
-                .password(passwordEncoder.encode(user.getPassword()))
                 .nickname(user.getNickname())
                 .address(user.getAddress())
                 .zipCode(user.getZipCode())

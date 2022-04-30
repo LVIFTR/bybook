@@ -18,12 +18,12 @@
                 ${fullName}
             </button>
             <div class="dropdown-menu">
-                <form action="/logout" method="POST">
-                    <button class="dropdown-item" type="submit">Вийти</button>
+                <form action="/user" method="GET">
+                    <button class="dropdown-item" type="submit">Сторінка користувача</button>
                     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                 </form>
-                <form action="/user" method="GET">
-                    <button class="dropdown-item" type="submit">Користувач</button>
+                <form action="/logout" method="POST">
+                    <button class="dropdown-item" type="submit">Вийти</button>
                     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                 </form>
             </div>
