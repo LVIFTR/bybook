@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -23,18 +24,16 @@ import java.util.Collection;
 @Builder(toBuilder = true)
 @AllArgsConstructor
 @NoArgsConstructor
-public class User implements UserDetails {
+public class User implements UserDetails, Authentication {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @NotBlank
-    @Min(value = 2)
     private String firstName;
 
     @NotBlank
-    @Min(value = 2)
     private String lastName;
 
     @Column(unique = true)
@@ -43,7 +42,6 @@ public class User implements UserDetails {
     private String username;
 
     @NotBlank
-    @Min(value = 8)
     private String password;
 
     @NotBlank
@@ -68,6 +66,31 @@ public class User implements UserDetails {
     }
 
     @Override
+    public Object getCredentials() {
+        return null;
+    }
+
+    @Override
+    public Object getDetails() {
+        return null;
+    }
+
+    @Override
+    public Object getPrincipal() {
+        return null;
+    }
+
+    @Override
+    public boolean isAuthenticated() {
+        return false;
+    }
+
+    @Override
+    public void setAuthenticated(boolean isAuthenticated) throws IllegalArgumentException {
+
+    }
+
+    @Override
     public boolean isAccountNonExpired() {
         return true;
     }
@@ -87,4 +110,8 @@ public class User implements UserDetails {
         return true;
     }
 
+    @Override
+    public String getName() {
+        return null;
+    }
 }

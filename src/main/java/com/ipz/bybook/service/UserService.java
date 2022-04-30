@@ -9,6 +9,6 @@ public interface UserService {
 
     User findById(Long id);
 
-    User update(User user);
+    User update(CreateUserForm user, Long id);
 
 }
