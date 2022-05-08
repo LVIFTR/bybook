@@ -4,7 +4,6 @@ import com.ipz.bybook.domain.User;
 import com.ipz.bybook.dto.CreateUserForm;
 import com.ipz.bybook.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
