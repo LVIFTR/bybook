@@ -9,7 +9,7 @@
 <div class="w-100 h-100 d-flex align-items-center justify-content-center">
     <div class="col-md-8">
         <form action="/products/new" method="POST" class="form-signin">
-            <h2 class="form-heading text-center p-3">Реєстрація</h2>
+            <h2 class="form-heading text-center p-3">Додати нову книгу</h2>
 
             <#if productCannotBeCreated??>
                 <div class="form-row form-control m-3 alert alert-danger justify-content-center" role="alert">
