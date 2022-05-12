@@ -1,7 +1,9 @@
 .product-grid8 {
     font-family: Poppins, sans-serif;
     position: relative;
-    z-index: 1
+    z-index: 1;
+    margin-bottom: 45px;
+    margin-left: 20px;
 }
 
 .product-grid8 .product-image8 {
@@ -28,7 +30,7 @@
 }
 
 .product-grid8 .product-content {
-    padding: 20px 0 0
+    padding: 20px 0 0;
 }
 
 .product-grid8 .price {
@@ -55,7 +57,10 @@
     font-weight: 400;
     text-transform: capitalize;
     margin: 0 0 30px;
-    transition: all .3s ease 0s
+    transition: all .3s ease 0s;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .product-grid8 .title a {
