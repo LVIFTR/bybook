@@ -36,6 +36,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
                 .address(createUserForm.getAddress())
                 .zipCode(createUserForm.getZipCode())
                 .phoneNumber(createUserForm.getPhoneNumber())
+                .role("USER")
                 .build();
 
         return userRepository.save(user);

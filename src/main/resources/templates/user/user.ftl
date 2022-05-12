@@ -43,10 +43,11 @@
                         <div class="col-8">
                             <span>${user.getPhoneNumber()}</span>
                         </div>
-
-                        <form action="/user/update" method="get">
-                            <button type="submit" class="btn btn-primary">Редагувати</button>
-                        </form>
+                        <#if ROLE != "ADMIN">
+                            <form action="/user/update" method="get">
+                                <button type="submit" class="btn btn-primary">Редагувати</button>
+                            </form>
+                        </#if>
                     </div>
                 </div>
 
