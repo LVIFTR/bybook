@@ -14,7 +14,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.validation.constraints.Email;
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import java.util.Collection;
@@ -53,12 +52,13 @@ public class User implements UserDetails, Authentication {
     private String address;
 
     @NotBlank
-    @Min(value = 5)
     private String zipCode;
 
     @NotBlank
     @Column(unique = true)
     private String phoneNumber;
+
+    private String role;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
