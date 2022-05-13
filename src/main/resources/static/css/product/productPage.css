@@ -31,3 +31,7 @@ body {
 .right-side-pro-detail .price-pro {
     color: #E45641;
 }
+
+.edit-btn {
+    display: flex;
+}

@@ -51,4 +51,24 @@ public class ProductController {
         return "redirect:/products";
     }
 
+    @GetMapping("/{id}/update")
+    public String editProduct(@PathVariable Long id, @AuthenticationPrincipal User user, Model model) {
+        model.addAttribute("product", productService.findById(id));
+        return "products/edit";
+    }
+
+    @PostMapping("/{id}/update")
+    public String updateProduct(@PathVariable Long id, CreateProductForm createProductForm,
+                                @AuthenticationPrincipal User user, Model model) {
+        try {
+            productService.update(createProductForm, id);
+        } catch (RuntimeException exception) {
+            model.addAttribute("productCannotBeUpdated", "Щось пішло не так!");
+            model.addAttribute("product", productService.findById(id));
+            return "products/edit";
+        }
+        return "redirect:/products/" + id;
+    }
+
+
 }

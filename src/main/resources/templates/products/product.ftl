@@ -25,7 +25,7 @@
                             <p class="m-0 p-0">${product.authorName}</p>
                         </div>
                         <div class="col-lg-12">
-                            <p class="m-0 p-0 price-pro">Ціна:${product.price} ₴</p>
+                            <p class="m-0 p-0 price-pro">Ціна: ${product.price} ₴</p>
                             <hr class="p-0 m-0">
                         </div>
                         <div class="col-lg-12 pt-2">
@@ -34,14 +34,21 @@
                             <hr class="m-0 pt-2 mt-2">
                         </div>
                         <div class="col-lg-12 mt-3">
-                            <div class="row">
-                                <div class="col-lg-6 pb-2">
-                                    <a href="#" class="btn btn-danger w-100">Додати до кошика</a>
+                            <#if !isAdmin>
+                                <div class="row">
+                                    <div class="col-lg-6 pb-2">
+                                        <a href="#" class="btn btn-danger w-100">Додати до кошика</a>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <a href="#" class="btn btn-success w-100">Купити одразу!</a>
+                                    </div>
                                 </div>
-                                <div class="col-lg-6">
-                                    <a href="#" class="btn btn-success w-100">Купити одразу!</a>
-                                </div>
-                            </div>
+                            </#if>
+                            <#if isAdmin>
+                                <form action="/products/${product.id}/update" method="get" class="edit-btn">
+                                    <button class="btn btn-dark" type="submit">Редагувати</button>
+                                </form>
+                            </#if>
                         </div>
                     </div>
                 </div>
