@@ -1,7 +1,9 @@
 package com.ipz.bybook.service.impl;
 
+import com.ipz.bybook.domain.Role;
 import com.ipz.bybook.domain.User;
 import com.ipz.bybook.dto.CreateUserForm;
+import com.ipz.bybook.repository.RoleRepository;
 import com.ipz.bybook.repository.UserRepository;
 import com.ipz.bybook.service.UserService;
 import com.sun.istack.NotNull;
@@ -12,16 +14,22 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.HashSet;
+import java.util.List;
+
 @Service
 public class UserServiceImpl implements UserService, UserDetailsService {
 
     private final UserRepository userRepository;
 
+    private final RoleRepository roleRepository;
+
     private final BCryptPasswordEncoder passwordEncoder;
 
     @Autowired
-    public UserServiceImpl(UserRepository userRepository, BCryptPasswordEncoder passwordEncoder) {
+    public UserServiceImpl(UserRepository userRepository, RoleRepository roleRepository, BCryptPasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
+        this.roleRepository = roleRepository;
         this.passwordEncoder = passwordEncoder;
     }
 
@@ -36,7 +44,7 @@ public class UserServiceImpl implements UserService, UserDetailsService {
                 .address(createUserForm.getAddress())
                 .zipCode(createUserForm.getZipCode())
                 .phoneNumber(createUserForm.getPhoneNumber())
-                .role("USER")
+                .roles(new HashSet<>(List.of(roleRepository.findById(0).get())))
                 .build();
 
         return userRepository.save(user);

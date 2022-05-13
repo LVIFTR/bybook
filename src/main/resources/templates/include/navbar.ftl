@@ -22,12 +22,13 @@
                     <button class="dropdown-item" type="submit">Сторінка користувача</button>
                     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                 </form>
-                <#if ROLE == "ADMIN">
+                <#if isAdmin>
                     <form action="/products/new" method="get">
                         <button type="submit" class="dropdown-item">Додати продукт(книгу)</button>
                         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
                     </form>
                 </#if>
+
                 <form action="/logout" method="POST">
                     <button class="dropdown-item" type="submit">Вийти</button>
                     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
