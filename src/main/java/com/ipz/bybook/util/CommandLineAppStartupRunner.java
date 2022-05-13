@@ -22,7 +22,7 @@ public class CommandLineAppStartupRunner implements CommandLineRunner {
 
     @Override
     public void run(String...args) {
-        if (userRepository.findByUsername("admin@admin.com").isEmpty()) {
+        if (userRepository.findByUsername("admin@admin").isEmpty()) {
             User admin = User.builder()
                     .firstName("System")
                     .lastName("Administrator")
