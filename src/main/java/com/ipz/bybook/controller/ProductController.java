@@ -2,6 +2,7 @@ package com.ipz.bybook.controller;
 
 import com.ipz.bybook.domain.User;
 import com.ipz.bybook.dto.CreateProductForm;
+import com.ipz.bybook.service.DiscountService;
 import com.ipz.bybook.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -18,9 +19,12 @@ public class ProductController {
 
     private final ProductService productService;
 
+    private final DiscountService discountService;
+
     @Autowired
-    public ProductController(ProductService productService) {
+    public ProductController(ProductService productService, DiscountService discountService) {
         this.productService = productService;
+        this.discountService = discountService;
     }
 
     @GetMapping
@@ -36,7 +40,8 @@ public class ProductController {
     }
 
     @GetMapping("/new")
-    public String newProduct(@AuthenticationPrincipal User user) {
+    public String newProduct(@AuthenticationPrincipal User user, Model model) {
+        model.addAttribute("discounts", discountService.findAll());
         return "products/new";
     }
 
@@ -46,6 +51,7 @@ public class ProductController {
             productService.create(createProductForm);
         } catch (RuntimeException exception) {
             model.addAttribute("productCannotBeCreated", "Щось пішло не так!");
+            model.addAttribute("discounts", discountService.findAll());
             return "products/new";
         }
         return "redirect:/products";
@@ -54,6 +60,7 @@ public class ProductController {
     @GetMapping("/{id}/update")
     public String editProduct(@PathVariable Long id, @AuthenticationPrincipal User user, Model model) {
         model.addAttribute("product", productService.findById(id));
+        model.addAttribute("discounts", discountService.findAll());
         return "products/edit";
     }
 

@@ -17,6 +17,8 @@ public class CreateProductForm {
 
     private String description;
 
+    private long discountId;
+
     private double price;
 
     private boolean isAvailable;

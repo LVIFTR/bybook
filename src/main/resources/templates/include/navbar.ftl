@@ -10,6 +10,11 @@
             <li class="nav-item active">
                 <a class="nav-link" href="/products">Магазин<span class="sr-only">(current)</span></a>
             </li>
+            <#if isAdmin>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/admin/discounts">Знижки<span class="sr-only">(current)</span></a>
+                </li>
+            </#if>
         </ul>
 
         <div class="btn-group dropleft">

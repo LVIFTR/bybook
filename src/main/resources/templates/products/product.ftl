@@ -25,7 +25,12 @@
                             <p class="m-0 p-0">${product.authorName}</p>
                         </div>
                         <div class="col-lg-12">
-                            <p class="m-0 p-0 price-pro">Ціна: ${product.price} ₴</p>
+                            <#if product.discountId != 0>
+                                <p class="m-0 p-0 price-pro"><span>Ціна: ${product.price} ₴</span></p>
+                                <p class="m-0 p-0 price-pro">Ціна: ${product.priceWithDiscount} ₴</p>
+                            <#else>
+                                    <p class="m-0 p-0 price-pro">Ціна: ${product.price} ₴</p>
+                            </#if>
                             <hr class="p-0 m-0">
                         </div>
                         <div class="col-lg-12 pt-2">

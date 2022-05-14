@@ -27,7 +27,17 @@
                 <input name="imageUrl" type="text" class="form-control m-3" placeholder="Посилання на зображення"
                        value="${product.imageUrl}" required/>
                 <input name="price" type="number" step="any" min="0.1" class="form-control m-3" placeholder="Ціна книги"
-                       value="${product.price}" required/>
+                       value="${product.getPrice()}" required/>
+                <select class="form-control m-3" name="discountId">
+                    <option selected value="0">Виберіть(Щоб очистити знижку, виберіть цей варіант)</option>
+                    <#list discounts as discount>
+                        <#if discount.id == product.discountId>
+                            <option value="${discount.id}" selected>${discount.name} ${discount.percentOfDiscount} %</option>
+                        <#else>
+                            <option value="${discount.id}">${discount.name} ${discount.percentOfDiscount} %</option>
+                        </#if>
+                    </#list>
+                </select>
                 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
                 <div class="form-row justify-content-center">
                     <button class="btn btn-primary p-3 w-50" type="submit">Зберегти зміни</button>

@@ -32,6 +32,10 @@ body {
     color: #E45641;
 }
 
+.right-side-pro-detail .price-pro span{
+    text-decoration: line-through;
+}
+
 .edit-btn {
     display: flex;
 }

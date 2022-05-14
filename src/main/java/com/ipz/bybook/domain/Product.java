@@ -45,6 +45,8 @@ public class Product {
     @ElementCollection
     private List<String> categoriesIds;
 
-    private String discountId;
+    private long discountId;
+
+    private double priceWithDiscount;
 
 }

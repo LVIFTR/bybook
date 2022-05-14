@@ -28,6 +28,12 @@
                        required/>
                 <input name="price" type="number" step="any" min="0.1" class="form-control m-3" placeholder="Ціна книги"
                        required/>
+                <select class="form-control m-3" name="discountId">
+                    <option selected value="0">Виберіть</option>
+                    <#list discounts as discount>
+                        <option value="${discount.id}">${discount.name} ${discount.percentOfDiscount} %</option>
+                    </#list>
+                </select>
                 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
                 <div class="form-row justify-content-center">
                     <button class="btn btn-primary p-3 w-50" type="submit">Створити</button>
