@@ -43,7 +43,7 @@ public class Product {
     private boolean isAvailable;
 
     @ElementCollection
-    private List<String> categoriesIds;
+    private List<Long> categoriesIds;
 
     private long discountId;
 
