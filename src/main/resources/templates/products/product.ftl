@@ -37,6 +37,12 @@
                             <h5>Опис книги</h5>
                             <span>${product.description}</span>
                             <hr class="m-0 pt-2 mt-2">
+
+                            <h5>Категорії</h5>
+                            <#list usedCategories as category>
+                                <span>${category.name}</span>
+                            </#list>
+                            <hr class="m-0 pt-2 mt-2">
                         </div>
                         <div class="col-lg-12 mt-3">
                             <#if !isAdmin>

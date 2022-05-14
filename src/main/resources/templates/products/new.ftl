@@ -34,6 +34,12 @@
                         <option value="${discount.id}">${discount.name} ${discount.percentOfDiscount} %</option>
                     </#list>
                 </select>
+                <select class="form-control m-3" multiple name="categoriesIds">
+                    <option disabled>Виберіть категорії</option>
+                    <#list categories as category>
+                        <option value="${category.id}">${category.name}</option>
+                    </#list>
+                </select>
                 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
                 <div class="form-row justify-content-center">
                     <button class="btn btn-primary p-3 w-50" type="submit">Створити</button>

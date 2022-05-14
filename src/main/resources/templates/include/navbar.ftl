@@ -14,6 +14,9 @@
                 <li class="nav-item active">
                     <a class="nav-link" href="/admin/discounts">Знижки<span class="sr-only">(current)</span></a>
                 </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/admin/categories">Категорії<span class="sr-only">(current)</span></a>
+                </li>
             </#if>
         </ul>
 

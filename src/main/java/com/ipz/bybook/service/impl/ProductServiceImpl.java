@@ -28,7 +28,6 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public Product create(CreateProductForm createProductForm) {
-
         Product product = Product.builder()
                 .name(createProductForm.getName())
                 .authorName(createProductForm.getAuthorName())
@@ -36,6 +35,7 @@ public class ProductServiceImpl implements ProductService {
                 .price(createProductForm.getPrice())
                 .imageUrl(createProductForm.getImageUrl())
                 //.isAvailable(createProductForm.isAvailable())
+                .categoriesIds(createProductForm.getCategoriesIds())
                 .isAvailable(true)
                 .build();
 
@@ -64,6 +64,7 @@ public class ProductServiceImpl implements ProductService {
                 .imageUrl(createProductForm.getImageUrl())
                 //.isAvailable(createProductForm.isAvailable())
                 .discountId(createProductForm.getDiscountId())
+                .categoriesIds(createProductForm.getCategoriesIds())
                 .build();
 
         Optional<Discount> discount = discountRepository.findById(createProductForm.getDiscountId());

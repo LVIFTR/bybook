@@ -38,6 +38,15 @@
                         </#if>
                     </#list>
                 </select>
+                <select class="form-control m-3" multiple name="categoriesIds">
+                    <option disabled>Виберіть категорії</option>
+                    <#list usedCategories as category>
+                        <option value="${category.id}" selected>${category.name}</option>
+                    </#list>
+                    <#list notUsedCategories as category>
+                        <option value="${category.id}">${category.name}</option>
+                    </#list>
+                </select>
                 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
                 <div class="form-row justify-content-center">
                     <button class="btn btn-primary p-3 w-50" type="submit">Зберегти зміни</button>
